@@ -1,10 +1,10 @@
 <template>
   <div class="card-wrapper">
     
-      <h2 class="title" >{{thisMovie.title}}</h2>
-      <h4 class="original-title" >Original title: {{ thisMovie.original_title }}</h4>
-      <p class="language" >Original Language: {{thisMovie.original_language}}</p>
-      <small class="rates" >Rates: {{thisMovie.vote_average}}</small>
+      <h2>{{thisItem.title || thisItem.name}}</h2>
+      <h4>Original title: {{ thisItem.original_title || thisItem.original_name }}</h4>
+      <p>Original Language: {{thisItem.original_language}}</p>
+      <small>Rates: {{thisItem.vote_average}}</small>
     
   </div>
 </template>
@@ -13,8 +13,7 @@
 export default {
   name: "CardItem",
   props: {
-      thisMovie: Object,
-      thisSerie: Object
+    thisItem: Object,
   }
 };
 </script>

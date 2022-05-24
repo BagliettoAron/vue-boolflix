@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <SearchBar 
-    @searchClicked='sendAlbumRequest($event), sendSerieTVRequest($event)'
+    @searchClicked='getAll($event)'
     />
     <MainContent :movies='films' :series='serieTV'
-    />
+/>
   </div>
 </template>
 
@@ -29,6 +29,11 @@ export default {
     }
   },
   methods: {
+    getAll(searchInput) {
+      this.sendAlbumRequest(searchInput),
+      this.sendSerieTVRequest(searchInput)
+    },
+    
     sendAlbumRequest: function (searchInput) {
       axios
       .get ('https://api.themoviedb.org/3/search/movie', {
@@ -39,6 +44,7 @@ export default {
       })
       .then (resp => {
         this.films = resp.data.results;
+        console.log(this.films);
       })
     },
   
@@ -52,6 +58,7 @@ export default {
       })
       .then (resp => {
         this.serieTV = resp.data.results;
+        console.log(this.serieTV);
       })
     }
   },

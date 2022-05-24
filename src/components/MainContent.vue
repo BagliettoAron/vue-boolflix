@@ -5,7 +5,7 @@
         <CardItem 
         v-for='item in movies' 
         :key='item.id' 
-        :thisMovie='item'
+        :thisItem='item'
         />
 </div>
 
@@ -14,7 +14,7 @@
         <CardItem 
         v-for='item in series' 
         :key='item.id' 
-        :thisSerie='item'
+        :thisItem='item'
         />
     </div>
 </div>
