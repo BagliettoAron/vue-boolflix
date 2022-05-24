@@ -1,10 +1,22 @@
 <template>
+<div class="wrap">
+    <h2>Films</h2>
 <div class="main-section">
-    <CardItem 
-    v-for='item in movies' 
-    :key='item.id' 
-    :thisMovie='item'
-    />
+        <CardItem 
+        v-for='item in movies' 
+        :key='item.id' 
+        :thisMovie='item'
+        />
+</div>
+
+    <h2>Serie TV</h2>
+<div class="main-section">
+        <CardItem 
+        v-for='item in series' 
+        :key='item.id' 
+        :thisSerie='item'
+        />
+    </div>
 </div>
   
 </template>
@@ -19,17 +31,26 @@ export default {
         CardItem
     },
     props: {
-        movies: Array
+        movies: Array,
+        series: Array
     }
 
 }
 </script>
 
 <style lang="scss" scoped>
+
+.wrap{
+    h2{
+        text-align: center;
+        margin: 2rem 0;
+    }
+}
+
 .main-section{
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
 }
 
 </style>   

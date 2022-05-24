@@ -13,16 +13,14 @@
 export default {
   name: "CardItem",
   props: {
-      thisMovie: Object
+      thisMovie: Object,
+      thisSerie: Object
   }
 };
 </script>
 
 <style lang="scss" scoped>
 
-
-  
-  
 
 .card-wrapper {
     width: calc(100% / 4 - 16px);
