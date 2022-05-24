@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SearchBar @searchClicked='sendAlbumRequest($event)'/>
+    <MainContent />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SearchBar from './components/SearchBar.vue';
+import MainContent from './components/MainContent.vue';
+
+//import axios from 'axios'
+
+
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SearchBar,
+    MainContent
+  },
+  data () {
+    return {
+      films: []
+    }
+  },
+  methods: {
+    sendAlbumRequest: function (searchInput) {
+      
+    }
+
+
   }
 }
 </script>
 
 <style lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
