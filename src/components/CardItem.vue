@@ -4,12 +4,19 @@
     <h4>
       Original title: {{ thisItem.original_title || thisItem.original_name }}
     </h4>
-    <img v-if='imageFound()' :src="require(`../assets/img/${thisItem.original_language}.png`)" alt="thisItem.original_language">
+    <img
+      v-if="imageFound"
+      :src="require(`../assets/img/${thisItem.original_language}.png`)"
+      alt="thisItem.original_language"
+    />
     <div v-else class="">
-      <img :src="require('../assets/img/not_found.png')" alt="Flag not found">
-      <p>Original Language: {{ thisItem.original_language}}</p>
+      <img :src="require('../assets/img/not_found.png')" alt="Flag not found" />
+      <p>Original Language: {{ thisItem.original_language }}</p>
     </div>
-    <small>Rates: {{ thisItem.vote_average }}</small>
+    <p>Rates: {{ thisItem.vote_average }}</p>
+    <div>
+      <i v-for="n in 5" :key="n" :class="n <= ratingsStars ? 'fas' : 'far'" class="fa-star"></i>
+    </div>
   </div>
 </template>
 
@@ -21,24 +28,28 @@ export default {
   },
   data() {
     return {
-      flagImages : ['en', 'it']
+      flagImages: ["en", "it"],
+    };
+  },
+  computed: {
+    imageFound() {
+      return this.flagImages.includes(this.thisItem.original_language);
+    },
+    ratingsStars() {
+      return Math.ceil(this.thisItem.vote_average / 2);
     }
   },
-  methods: {
-    imageFound () {
-      return this.flagImages.includes(this.thisItem.original_language);
-
-    }
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-.card-wrapper {
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
-  img{
-    width: 3rem;
+.card-wrapper {
+  img {
+    height: 2rem;
   }
+
   width: calc(100% / 4 - 16px);
   margin: 8px;
   background-color: aliceblue;
