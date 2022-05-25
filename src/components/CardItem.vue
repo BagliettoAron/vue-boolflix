@@ -4,18 +4,36 @@
     <h4>
       Original title: {{ thisItem.original_title || thisItem.original_name }}
     </h4>
-    <img
-      v-if="imageFound"
-      :src="require(`../assets/img/${thisItem.original_language}.png`)"
-      alt="thisItem.original_language"
-    />
-    <div v-else class="">
-      <img :src="require('../assets/img/not_found.png')" alt="Flag not found" />
+    <div class="language-flag" v-if="imageFound">
+      <img
+        :src="require(`../assets/img/${thisItem.original_language}.png`)"
+        alt="thisItem.original_language"
+      />
+    </div>
+    <div v-else class="flag-not-found">
+      <img :src="require('../assets/img/not_found.png')" alt="Flag-not-found" />
       <p>Original Language: {{ thisItem.original_language }}</p>
     </div>
-    <p>Rates: {{ thisItem.vote_average }}</p>
     <div>
-      <i v-for="n in 5" :key="n" :class="n <= ratingsStars ? 'fas' : 'far'" class="fa-star"></i>
+      <i
+        v-for="n in 5"
+        :key="n"
+        :class="n <= ratingsStars ? 'fas' : 'far'"
+        class="fa-star"
+      ></i>
+    </div>
+    <div class="poster" v-if="thisItem.poster_path != null">
+      <img
+        :src="`https://image.tmdb.org/t/p/w92/${thisItem.poster_path}`"
+        alt="Album image"
+      />
+    </div>
+
+    <div class="poster-not-found" v-else>
+      <img
+        :src="require('../assets/img/not_found.png')"
+        alt="Poster-not-found"
+      />
     </div>
   </div>
 </template>
@@ -37,19 +55,24 @@ export default {
     },
     ratingsStars() {
       return Math.ceil(this.thisItem.vote_average / 2);
-    }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import '~@fortawesome/fontawesome-free/css/all.min.css';
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+
+.flag-not-found img,
+.language-flag img {
+  height: 2rem;
+}
+
+.poster-not-found img {
+  height: 6rem;
+}
 
 .card-wrapper {
-  img {
-    height: 2rem;
-  }
-
   width: calc(100% / 4 - 16px);
   margin: 8px;
   background-color: aliceblue;
