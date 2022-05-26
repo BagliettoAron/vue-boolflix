@@ -28,11 +28,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
 .wrap {
-
-  background-color: grey ;
+  background-color: grey;
+  height: 100%;
 
   h2 {
     text-align: center;
