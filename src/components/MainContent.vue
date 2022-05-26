@@ -28,10 +28,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+
 .wrap {
+
+  background-color: grey ;
+
   h2 {
     text-align: center;
-    margin: 2rem 0;
+    padding: 2rem 0;
+    text-transform: uppercase;
+    font-size: 600;
   }
 }
 

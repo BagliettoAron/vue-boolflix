@@ -1,5 +1,7 @@
 <template>
   <div class="card-wrapper">
+
+  <div class="card-info">
     <h2>{{ thisItem.title || thisItem.name }}</h2>
     <h4>
       Original title: {{ thisItem.original_title || thisItem.original_name }}
@@ -22,6 +24,11 @@
         class="fa-star"
       ></i>
     </div>
+
+  </div>
+
+  <div class="card-poster">
+  
     <div class="poster" v-if="thisItem.poster_path != null">
       <img
         :src="`https://image.tmdb.org/t/p/w92/${thisItem.poster_path}`"
@@ -35,6 +42,7 @@
         alt="Poster-not-found"
       />
     </div>
+  </div>
   </div>
 </template>
 
@@ -79,5 +87,26 @@ export default {
   text-align: center;
   line-height: 2rem;
   padding: 2rem;
+  height: 25rem;
+
+
 }
+.card-poster{
+  display: none;
+}
+
+.card-wrapper:hover{
+
+  .card-poster{
+  display: block;
+  transition-duration: 3000ms;
+  }
+
+  .card-info{
+    display: none;
+    transition-duration: 3s;
+  } 
+}
+
+
 </style>
